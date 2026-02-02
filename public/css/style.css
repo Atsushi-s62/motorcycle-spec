@@ -1,0 +1,467 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+    font-size: 16px;
+    background-color: #222222; 
+}
+
+h1 {
+    margin: 0 0;
+    padding: 20px;
+    background: #404040;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+}
+
+h1 > a {
+    text-decoration: none;
+}
+
+a {
+    color: white;
+}
+
+#intro {
+    margin: 20px 0 20px 10px;
+    color: white;
+    font-size: 18px;
+}
+
+#guide-open, #guide-close {
+    margin: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    border: 2px solid #ccc;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    background: #404040;
+    user-select: none;
+}
+
+#guide-close {
+    margin: 40px auto;
+}
+
+#guide-open:hover, #guide-close:hover {
+    background: #222222;
+}
+
+#guide-text {
+    color: white;
+    background: #404040;
+    width: 80%;
+    height: 45%;
+    font-size: 20px;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 8px;
+    transition: transform 0.4s;
+    z-index: 2;
+}
+
+#guide-text > p {
+    margin: 0 0 20px;
+}
+
+#mask {
+    background: white;
+    opacity: 0.6;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#guide-text.hidden {
+    transform: translate(0, -500px);
+}
+
+#mask.hidden {
+    display: none;
+}
+
+/* メーカー別及び排気量別のボタンスタイル */
+.btn {
+    margin-left: 10px;
+    font-weight: bold;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #a0a0a0;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
+    display: inline-block;
+    list-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;   
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.m-honda.active {
+    border: 1px solid black;
+    color: white;
+    background: #FF3333;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
+}
+
+.m-yamaha.active{
+    border: 1px solid black;
+    color: white;
+    background: #0066FF;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
+}
+
+.m-suzuki.active {
+    border: 1px solid black;
+    color: black;
+    background: #FFFF33;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
+}
+
+.m-kawasaki.active {
+    border: 1px solid black;
+    color: black;
+    background: limegreen;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
+}
+
+.cc.active {
+    border: 1px solid black;
+    background: #FF9966;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
+}
+
+.by-maker, .by-displacement {
+    margin: 10px auto;
+    background: #EEEEEE;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.by-maker > p, .by-displacement > p {
+    
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 10px 0 10px;
+    
+}
+
+.by-displacement > ul{
+    margin: 20px;
+}
+
+
+/* テーブルのスタイル */
+table {
+    margin: 20px 0;
+    position: relative;
+}
+
+th {
+    position: sticky;
+    top: -1px;
+    padding: 10px 25px;
+    background: #404040;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+}
+
+th,td {
+    font-size: 16px;
+    white-space: nowrap;
+    
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 2px solid #eee;
+}
+
+td {
+    text-align: center;
+    color:white;
+}
+
+[data-car-model] {
+    margin: 20px 0 0 0;
+    padding: 0 10px;
+    font-size: 18px;
+}
+
+[data-price], [data-relase-date] {
+    margin: 5px 0 0 0;
+    padding: 0;
+}
+
+[data-maker] {
+    margin: 0;
+    padding: 0;
+    text-align: left; 
+}
+
+[data-maker="HONDA"] > .maker-tag {
+    background: #FF3333;
+}
+
+[data-maker="YAMAHA"] > .maker-tag {
+    background: #0066FF;
+}
+
+[data-maker="SUZUKI"] > .maker-tag {
+    background: #FFFF33;
+    color: black
+}
+
+[data-maker="KAWASAKI"] > .maker-tag {
+    background: limegreen;
+    color: black
+}
+
+.maker-tag {
+    display: inline-block;
+    margin: 0;
+    padding: 5px;
+}
+
+
+/* ソートアイコン */
+.sort::after {
+    content: '\f0dc';
+    font-family: FontAwesome;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.sort.asc::after {
+    content: '\f0de';
+    font-family: FontAwesome;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.sort.desc::after {
+    content: '\f0dd';
+    font-family: FontAwesome;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+[data-sort="fuel-economy"].sort::after {
+    transform: translateY(-13px);
+}
+
+[data-sort="fuel-tank-capacity"].sort::after {
+    transform: translateY(-13px);
+    margin-left: 10px;
+}
+
+
+/* 新規登録画面 */
+.create-form label {
+    margin: 10px 0 10px 0;
+    border-bottom: 2px solid white;
+    display: inline-block;
+    height: 24px;
+    width: 240px;
+    text-align: center;
+    color: white;
+}
+
+
+
+/* 編集フォーム */
+.edit-form label {
+    margin: 10px 0 10px 0;
+    border-bottom: 2px solid white;
+    display: inline-block;
+    height: 24px;
+    width: 240px;
+    text-align: center;
+    color: white;
+}
+
+select {
+    margin: 10px 0;
+    height: 28px;
+    width: 50%;
+    font-weight: bold;
+    font-size: 16px;
+    border: 2px solid blue;
+}
+
+input[type="text"] {
+    margin: 10px 0;
+    height: 24px;
+    width: 50%;
+    font-weight: bold;
+    font-size: 16px;
+    border: 2px solid blue;
+}
+
+.registration, .update{
+    margin: 20px;
+    width: 200px;
+    height: 100px;
+    font-size: 48px;
+    border: 2px solid red;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
+}
+
+.registration:hover, .update:hover {
+    opacity: 0.8;
+}
+
+
+/* edit画面 */
+#new-registaration > a {
+    margin: 10px 10px;
+    display: inline-block;
+    border: 2px solid white;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    background: royalblue;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
+
+}
+
+
+/* コメント画面-フォーム  */
+.comment-form {
+    color: white;
+    width: 500px;
+    margin: 10px 0 20px 20px;
+}
+
+.comment-form .form-group {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.form-group {
+    margin: 10px 0 10px 5px;
+}
+
+.form-group > input[type="text"] {
+    margin: 0;
+    padding: 5px;
+    width: 150px;
+    height: 30px;
+    font-weight: normal;
+    box-sizing: border-box;
+}
+
+.form-group > textarea {
+    width: 300px;
+    height: 80px;   
+}
+
+.comment-form-btn {
+    margin: 10px 0 10px 5px;
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+}
+
+/* コメント画面-表示 */
+.comment {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 20px;
+    width: 530px;
+}
+
+.comment-name {
+    display: flex;
+    margin: 0;
+    padding: 0 0 0 10px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: white;
+    background: #404040;
+    border: 1px solid white;
+    border-radius: 10px 10px 0 0;
+}
+
+.comment-author {
+    width: 265px;
+}
+
+.comment-date {
+    padding: 0 10px 0 0;
+    width: 265px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.comment-body {
+    margin: 0;
+    padding: 10px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 0 0 10px 10px;
+}
+
+
+/* エディットコメント削除ボタン */
+.comment-body-edit {
+    margin: 0;
+    padding: 10px;
+    color: white;
+    border: 1px solid white;
+}
+
+.comment-delete {
+    border: 1px solid white;
+    width: 530px;
+    height: 30px;
+    border-radius: 0 0 10px 10px;
+    display: block;
+    cursor: pointer;
+}
+
+.comment-delete:hover {
+    opacity: 0.8;
+    background: red;
+    box-sizing: border-box;
+}
+
+.comment-item {
+    display: flex;
+    flex-direction: column;
+}
