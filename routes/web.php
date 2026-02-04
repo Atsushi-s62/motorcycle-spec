@@ -9,6 +9,10 @@ use App\Http\Controllers\CommentController;
 //     // return view('welcome');
 // });
 
+Route::get('/', function () {
+    return redirect()->route('posts.index');
+});
+
 Route::get('/posts',[PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/commentId/{post}',[PostController::class, 'commentId'])->name('posts.commentId');
 Route::post('/posts/commentId/{post}',[CommentController::class, 'store'])->name('comments.store');
