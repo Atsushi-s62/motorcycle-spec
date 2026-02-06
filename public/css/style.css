@@ -87,7 +87,7 @@ a {
 }
 
 #guide-text.hidden {
-    transform: translate(0, -500px);
+    transform: translate(0, -1000px);
 }
 
 #mask.hidden {
