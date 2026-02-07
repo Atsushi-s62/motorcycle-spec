@@ -143,7 +143,7 @@
                 <label for="remarks">備考</label>
                 <input type="text" id="remarks" name="remarks" value="{{ old('remarks', $post->remarks) }}">
             </div>
-                <button type="submit" class="update">登録</button>
+                <button type="submit" class="update">更新</button>
         </form>
     </div>
 </body>
